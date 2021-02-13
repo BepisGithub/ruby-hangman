@@ -13,7 +13,7 @@ class Game
   end
 
   def round(word, f_guesses, guessed)
-    puts word
+    
   end
 
   def game(word, f_guesses, guessed)
