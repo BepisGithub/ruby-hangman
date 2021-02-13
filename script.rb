@@ -18,6 +18,7 @@ class Game
 
   def game(word, f_guesses, guessed)
     secret_array = word.split('')
+    your_guess = []
     while f_guesses < 6 && !guessed
       guessed = round(word, f_guesses, guessed)
     end
