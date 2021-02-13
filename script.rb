@@ -18,11 +18,11 @@ class Game
     puts 'Guess a letter: '
     letter_guess = ''
     letter_guess = gets.chomp.strip until (letter_guess.is_a? String) && (letter_guess.length == 1)
-    puts letter_guess
+    letter_guess
   end
 
   def round(s_word, f_guesses, won)
-    get_guess
+    
   end
 
   def game(s_word, f_guesses, won)
