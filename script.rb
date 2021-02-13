@@ -22,12 +22,13 @@ class Game
   end
 
   def round(s_arr, f_guesses, won)
+    guess = get_guess
 
   end
 
   def game(s_word, f_guesses, won)
     secret_word_array = s_word.split('')
-    your_guess = []
+    your_guess = [] # TODO: PASS THIS TO THE ROUND FUNCTION
     your_guess.fill('_', 0, secret_word_array.length)
     while f_guesses < @max_failures && !won
       puts "#{your_guess} is your guess"
