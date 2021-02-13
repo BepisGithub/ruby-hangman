@@ -8,20 +8,20 @@ class Game
     # check for save game later, if true load it and set the parameters. else use default values.
     @secret_word = File.readlines($dictionary).sample
     @false_guesses = 0
-    @guessed = false
-    game(@secret_word, @false_guesses, @guessed)
+    @won = false
+    game(@secret_word, @false_guesses, @won)
   end
 
-  def round(word, f_guesses, guessed)
+  def round(s_word, f_guesses, won)
     
   end
 
-  def game(word, f_guesses, guessed)
-    secret_array = word.split('')
+  def game(s_word, f_guesses, won)
+    secret_word_array = s_word.split('')
     your_guess = []
-    your_guess.fill('_', 0, secret_array.length)
-    while f_guesses < 6 && !guessed
-      guessed = round(word, f_guesses, guessed)
+    your_guess.fill('_', 0, secret_word_array.length)
+    while f_guesses < 6 && !won
+      won = round(s_word, f_guesses, won)
     end
   end
   
