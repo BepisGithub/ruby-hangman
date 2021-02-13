@@ -14,6 +14,8 @@ class Game
     game(@secret_word, @false_guesses, @won)
   end
 
+
+
   def round(s_word, f_guesses, won)
     
   end
@@ -24,7 +26,7 @@ class Game
     your_guess.fill('_', 0, secret_word_array.length)
     while f_guesses < @max_failures && !won
       puts "#{your_guess} is your guess"
-      puts "You have guessed incorrectly #{f_guesses} times."
+      puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       won = round(s_word, f_guesses, won)
     end
   end
