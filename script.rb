@@ -21,8 +21,8 @@ class Game
     letter_guess
   end
 
-  def round(s_word, f_guesses, won)
-    
+  def round(s_arr, f_guesses, won)
+
   end
 
   def game(s_word, f_guesses, won)
@@ -32,7 +32,7 @@ class Game
     while f_guesses < @max_failures && !won
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
-      won = round(s_word, f_guesses, won)
+      won = round(secret_word_array, f_guesses, won)
     end
   end
   
