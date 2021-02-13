@@ -2,6 +2,7 @@ $dictionary = File.open('5desk.txt', 'r')
 
 class Game
   
+  attr_accessor :max_failures
 
   
   def initialize(save_game = false)
@@ -9,6 +10,7 @@ class Game
     @secret_word = File.readlines($dictionary).sample
     @false_guesses = 0
     @won = false
+    @max_failures = 6
     game(@secret_word, @false_guesses, @won)
   end
 
@@ -20,7 +22,9 @@ class Game
     secret_word_array = s_word.split('')
     your_guess = []
     your_guess.fill('_', 0, secret_word_array.length)
-    while f_guesses < 6 && !won
+    while f_guesses < @max_failures && !won
+      puts "#{your_guess} is your guess"
+      puts "You have guessed incorrectly #{f_guesses} times."
       won = round(s_word, f_guesses, won)
     end
   end
