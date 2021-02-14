@@ -23,7 +23,7 @@ class Game
 
   def round(s_arr)
     guess = get_guess
-    s_arr.include?(guess)
+    [s_arr.include?(guess), guess]
   end
 
   def game(s_word, f_guesses, won)
@@ -35,6 +35,13 @@ class Game
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       result = round(secret_word_array)
+      if result[0]
+        secret_word_array.each_with_index do |char, idx|
+          your_guess[idx] = char if char == result[1]
+        end
+      else
+        f_guesses += 1
+      end
       won = true if your_guess == secret_word_array
     end
     #after you won or lost
