@@ -8,15 +8,18 @@ class Game
   def initialize()
     @save_path = 'saves/save.txt'
     saved_game = File.file?(@save_path)
-    # TODO: Ask the user if they want to load a save game
     input = ''
     if saved_game
       puts 'Load game? (y/n)'
       input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     end
-    # TODO: If the user has a save game AND they would like to load it then load it, otherwise use normal values
     if saved_game && input == 'y'
       # TODO: Load the game
+      # The data in the text file is in a json format
+      # Take the data, convert it from a json into usable values
+      # Join the s_arr into the secret word
+      # Assign the false guesses value the one in the saved data
+      # TODO: Pass the w_chars and y_guess in as an argument into the game function
     else
       @secret_word = File.readlines($dictionary).sample
       while @secret_word.length < 5 || @secret_word.length > 12
@@ -51,7 +54,7 @@ class Game
     end
   end
 
-  def game(s_word, f_guesses, won)
+  def game(s_word, f_guesses, won) # TODO: Accept parameters with default values for your_guess (default = []) and wrong_chars (default = [])
     secret_word_array = s_word.downcase.strip.split('')
     your_guess = []
     your_guess.fill('_', 0, secret_word_array.length)
