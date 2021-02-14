@@ -7,6 +7,8 @@ class Game
 
   def initialize()
     @save_path = 'saves/save.JSON'
+    @won = false
+    @max_failures = 6
     saved_game = File.file?(@save_path)
     input = ''
     if saved_game
@@ -16,24 +18,22 @@ class Game
     if saved_game && input == 'y'
       # TODO: Load the game
       save_data = File.read(@save_path)
-      save_data =  JSON.parse(save_data)
-      puts save_data
-      puts save_data['f_guesses']
+      save_data = JSON.parse(save_data)
       # The data in the text file is in a json format
       # Take the data, convert it from a json into usable values
       # Join the s_arr into the secret word
+      word = save_data['s_arr'].join('')
       # Assign the false guesses value the one in the saved data
       # TODO: Pass the w_chars and y_guess in as an argument into the game function
+      game(word, save_data['f_guesses'], @won, save_data['y_guess'], save_data['w_chars'])
     else
       @secret_word = File.readlines($dictionary).sample
       while @secret_word.length < 5 || @secret_word.length > 12
         @secret_word = File.readlines($dictionary).sample
       end
       @false_guesses = 0
+      game(@secret_word, @false_guesses, @won)
     end
-    @won = false
-    @max_failures = 6
-    game(@secret_word, @false_guesses, @won)
   end
 
   def get_guess
