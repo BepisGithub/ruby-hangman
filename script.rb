@@ -29,18 +29,21 @@ class Game
     secret_word_array = s_word.downcase.strip.split('')
     your_guess = []
     your_guess.fill('_', 0, secret_word_array.length)
+    wrong_chars = []
     while f_guesses < @max_failures && !won
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       result = round(secret_word_array)
-      puts "You have already guessed the letter #{result[1]}" if your_guess.include?(result[1])
+      puts "You have already guessed the letter #{result[1]}" if your_guess.include?(result[1]) || wrong_chars.include?(result[1])
       if result[0]
         secret_word_array.each_with_index do |char, idx|
           your_guess[idx] = char if char == result[1]
         end
       else
-        f_guesses += 1
+        f_guesses += 1 unless wrong_chars.include?(result[1])
+        wrong_chars.push(result[1])
       end
+      wrong_chars.uniq!
       won = true if your_guess == secret_word_array
     end
     puts "The secret word was #{s_word}"
