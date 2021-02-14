@@ -1,10 +1,9 @@
 $dictionary = File.open('5desk.txt', 'r')
 
 class Game
-  
+
   attr_accessor :max_failures
 
-  
   def initialize(save_game = false)
     # check for save game later, if true load it and set the parameters. else use default values.
     @secret_word = File.readlines($dictionary).sample
@@ -46,11 +45,10 @@ class Game
       won = true if your_guess == secret_word_array
     end
     puts "The secret word was #{s_word}"
-    puts 'You lost' if !won
+    puts 'You lost' unless won
     puts 'You won' if won
-    #after you won or lost
+    # after you won or lost
   end
-  
 
 end
 
