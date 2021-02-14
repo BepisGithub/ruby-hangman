@@ -39,7 +39,7 @@ class Game
       if existance_of_save
         # overwrite the file
         File.open(@save_path, 'w') {}
-        
+        File.write(@save_path, save_data)
       else
         # create file then save data
       end
