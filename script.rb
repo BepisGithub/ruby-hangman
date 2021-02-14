@@ -35,6 +35,7 @@ class Game
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       result = round(secret_word_array)
+      puts "You have already guessed the letter #{result[1]}" if your_guess.include?(result[1])
       if result[0]
         secret_word_array.each_with_index do |char, idx|
           your_guess[idx] = char if char == result[1]
