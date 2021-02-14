@@ -5,8 +5,10 @@ $dictionary = File.open('5desk.txt', 'r')
 class Game
   attr_accessor :max_failures
 
-  def initialize(save_game = false)
+  def initialize()
+    @save_path = 'saves/save.txt'
     # TODO: Ask the user if they want to load a save game
+    saved_game = File.file?(@save_path)    
     @secret_word = File.readlines($dictionary).sample
     while @secret_word.length < 5 || @secret_word.length > 12
       @secret_word = File.readlines($dictionary).sample
@@ -14,7 +16,6 @@ class Game
     @false_guesses = 0
     @won = false
     @max_failures = 6
-    @save_path = 'saves/save.txt'
     game(@secret_word, @false_guesses, @won)
   end
 
