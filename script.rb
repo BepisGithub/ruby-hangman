@@ -6,7 +6,7 @@ class Game
   attr_accessor :max_failures
 
   def initialize(save_game = false)
-    #TODO: Ask the user if they want to load a save game
+    # TODO: Ask the user if they want to load a save game
     @secret_word = File.readlines($dictionary).sample
     while @secret_word.length < 5 || @secret_word.length > 12
       @secret_word = File.readlines($dictionary).sample
