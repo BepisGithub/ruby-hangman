@@ -54,11 +54,11 @@ class Game
     end
   end
 
-  def game(s_word, f_guesses, won) # TODO: Accept parameters with default values for your_guess (default = []) and wrong_chars (default = [])
+  def game(s_word, f_guesses, won, y_guess = [], w_chars = []) # TODO: Accept parameters with default values for your_guess (default = []) and wrong_chars (default = [])
     secret_word_array = s_word.downcase.strip.split('')
-    your_guess = []
+    your_guess = y_guess
     your_guess.fill('_', 0, secret_word_array.length)
-    wrong_chars = []
+    wrong_chars = w_chars
     while f_guesses < @max_failures && !won
       save_game_prompt(secret_word_array, f_guesses, wrong_chars, your_guess)
       puts "#{your_guess} is your guess"
