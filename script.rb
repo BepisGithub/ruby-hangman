@@ -27,12 +27,17 @@ class Game
     [s_arr.include?(guess), guess]
   end
 
+  def save_game_prompt
+    # TODO
+  end
+
   def game(s_word, f_guesses, won)
     secret_word_array = s_word.downcase.strip.split('')
     your_guess = []
     your_guess.fill('_', 0, secret_word_array.length)
     wrong_chars = []
     while f_guesses < @max_failures && !won
+      save_game_prompt
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       puts "The letters you have guessed incorrectly so far are #{wrong_chars}" unless wrong_chars.empty?
