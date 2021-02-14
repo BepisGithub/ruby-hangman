@@ -6,7 +6,7 @@ class Game
   attr_accessor :max_failures
 
   def initialize()
-    @save_path = 'saves/save.txt'
+    @save_path = 'saves/save.JSON'
     saved_game = File.file?(@save_path)
     input = ''
     if saved_game
@@ -16,6 +16,8 @@ class Game
     if saved_game && input == 'y'
       # TODO: Load the game
       save_data = File.open(@save_path, 'r')
+      save_data = save_data.readlines
+      puts save_data
       # The data in the text file is in a json format
       # Take the data, convert it from a json into usable values
       # Join the s_arr into the secret word
