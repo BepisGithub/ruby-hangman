@@ -14,6 +14,7 @@ class Game
     @false_guesses = 0
     @won = false
     @max_failures = 6
+    @save_path = 'saves/save.txt'
     game(@secret_word, @false_guesses, @won)
   end
 
@@ -34,10 +35,11 @@ class Game
     input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     if input == 'y'
       save_data = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json
-      existance_of_save = File.file?('saves/save.txt')
+      existance_of_save = File.file?(@save_path)
       if existance_of_save
         # overwrite the file
-        save_file = File.open('saves/save.txt', 'w') {}
+        File.open(@save_path, 'w') {}
+        
       else
         # create file then save data
       end
