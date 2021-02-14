@@ -7,14 +7,23 @@ class Game
 
   def initialize()
     @save_path = 'saves/save.txt'
-    saved_game = File.file?(@save_path)    
+    saved_game = File.file?(@save_path)
     # TODO: Ask the user if they want to load a save game
-    # TODO: If the user has a save game AND they would like to load it then load it, otherwise use normal values
-    @secret_word = File.readlines($dictionary).sample
-    while @secret_word.length < 5 || @secret_word.length > 12
-      @secret_word = File.readlines($dictionary).sample
+    input = ''
+    if saved_game
+      puts 'Load game? (y/n)'
+      input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     end
-    @false_guesses = 0
+    # TODO: If the user has a save game AND they would like to load it then load it, otherwise use normal values
+    if saved_game && input == 'y'
+      # TODO: Load the game
+    else
+      @secret_word = File.readlines($dictionary).sample
+      while @secret_word.length < 5 || @secret_word.length > 12
+        @secret_word = File.readlines($dictionary).sample
+      end
+      @false_guesses = 0
+    end
     @won = false
     @max_failures = 6
     game(@secret_word, @false_guesses, @won)
