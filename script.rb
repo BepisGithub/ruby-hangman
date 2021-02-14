@@ -7,8 +7,9 @@ class Game
 
   def initialize()
     @save_path = 'saves/save.txt'
-    # TODO: Ask the user if they want to load a save game
     saved_game = File.file?(@save_path)    
+    # TODO: Ask the user if they want to load a save game
+    # TODO: If the user has a save game AND they would like to load it then load it, otherwise use normal values
     @secret_word = File.readlines($dictionary).sample
     while @secret_word.length < 5 || @secret_word.length > 12
       @secret_word = File.readlines($dictionary).sample
