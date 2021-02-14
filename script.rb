@@ -21,18 +21,22 @@ class Game
     letter_guess
   end
 
-  def round(s_arr, f_guesses, your_guess, won)
+  def round(s_arr)
     guess = get_guess
+    s_arr.include?(guess)
   end
 
   def game(s_word, f_guesses, won)
+    puts s_word
     secret_word_array = s_word.split('')
-    your_guess = [] 
+    your_guess = []
     your_guess.fill('_', 0, secret_word_array.length)
     while f_guesses < @max_failures && !won
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
-      won = round(secret_word_array, f_guesses, your_guess, won)
+      result = round(secret_word_array)
+      won = true if your_guess == secret_word_array
+      
     end
   end
   
