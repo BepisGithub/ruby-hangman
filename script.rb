@@ -45,6 +45,9 @@ class Game
       end
       won = true if your_guess == secret_word_array
     end
+    puts "The secret word was #{s_word}"
+    puts 'You lost' if !won
+    puts 'You won' if won
     #after you won or lost
   end
   
