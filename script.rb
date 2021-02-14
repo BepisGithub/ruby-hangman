@@ -54,7 +54,7 @@ class Game
     end
   end
 
-  def game(s_word, f_guesses, won, y_guess = [], w_chars = []) # TODO: Accept parameters with default values for your_guess (default = []) and wrong_chars (default = [])
+  def game(s_word, f_guesses, won, y_guess = [], w_chars = [])
     secret_word_array = s_word.downcase.strip.split('')
     your_guess = y_guess
     your_guess.fill('_', 0, secret_word_array.length)
