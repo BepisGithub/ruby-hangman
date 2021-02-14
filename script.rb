@@ -18,7 +18,7 @@ class Game
   def get_guess
     puts 'Guess a letter: '
     letter_guess = ''
-    letter_guess = gets.chomp.strip until (letter_guess.is_a? String) && (letter_guess.length == 1)
+    letter_guess = gets.chomp.strip.downcase until (letter_guess.is_a? String) && (letter_guess.length == 1)
     letter_guess
   end
 
