@@ -26,7 +26,6 @@ class Game
   end
 
   def game(s_word, f_guesses, won)
-    puts s_word
     secret_word_array = s_word.downcase.strip.split('')
     your_guess = []
     your_guess.fill('_', 0, secret_word_array.length)
