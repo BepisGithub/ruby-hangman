@@ -15,6 +15,7 @@ class Game
     end
     if saved_game && input == 'y'
       # TODO: Load the game
+      save_data = File.open(@save_path, 'r')
       # The data in the text file is in a json format
       # Take the data, convert it from a json into usable values
       # Join the s_arr into the secret word
