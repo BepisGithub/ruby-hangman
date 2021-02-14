@@ -51,7 +51,7 @@ class Game
     puts 'Save game? (y/n)'
     input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     if input == 'y'
-      save_data = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json
+      save_data = {s_arr: s_arr, f_guesses: f_guesses, w_chars: w_chars, y_guess: y_guess}.to_json
       File.open(@save_path, 'w') {} # overwrite the file
       File.write(@save_path, save_data)
     end
