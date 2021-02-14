@@ -16,7 +16,6 @@ class Game
       input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     end
     if saved_game && input == 'y'
-      # TODO: Load the game
       save_data = File.read(@save_path)
       save_data = JSON.parse(save_data)
       # The data in the text file is in a json format
@@ -24,7 +23,6 @@ class Game
       # Join the s_arr into the secret word
       word = save_data['s_arr'].join('')
       # Assign the false guesses value the one in the saved data
-      # TODO: Pass the w_chars and y_guess in as an argument into the game function
       game(word, save_data['f_guesses'], @won, save_data['y_guess'], save_data['w_chars'])
     else
       @secret_word = File.readlines($dictionary).sample
