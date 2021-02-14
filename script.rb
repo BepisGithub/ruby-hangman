@@ -15,9 +15,10 @@ class Game
     end
     if saved_game && input == 'y'
       # TODO: Load the game
-      save_data = File.open(@save_path, 'r')
-      save_data = save_data.readlines
+      save_data = File.read(@save_path)
+      save_data =  JSON.parse(save_data)
       puts save_data
+      puts save_data['f_guesses']
       # The data in the text file is in a json format
       # Take the data, convert it from a json into usable values
       # Join the s_arr into the secret word
@@ -51,7 +52,7 @@ class Game
     puts 'Save game? (y/n)'
     input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     if input == 'y'
-      save_data = {s_arr: s_arr, f_guesses: f_guesses, w_chars: w_chars, y_guess: y_guess}.to_json
+      save_data = JSON.generate({'s_arr': s_arr, 'f_guesses': f_guesses, 'w_chars': w_chars, 'y_guess': y_guess})
       File.open(@save_path, 'w') {} # overwrite the file
       File.write(@save_path, save_data)
     end
