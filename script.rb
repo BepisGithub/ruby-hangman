@@ -32,8 +32,16 @@ class Game
   def save_game_prompt(s_arr, f_guesses, w_chars, y_guess)
     puts 'Save game? (y/n)'
     input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
-    save = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json if input == 'y'
-    puts File.file?('/saves/save.txt')
+    if input == 'y'
+      save_data = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json
+      existance_of_save = File.file?('saves/save.txt')
+      if existance_of_save
+        # overwrite the file
+        save_file = File.open('saves/save.txt', 'w') {}
+      else
+        # create file then save data
+      end
+    end
   end
 
   def game(s_word, f_guesses, won)
