@@ -33,7 +33,7 @@ class Game
     puts 'Save game? (y/n)'
     input = gets.chomp.strip.downcase until (input.is_a? String) && (input.length == 1)
     save = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json if input == 'y'
-    puts save if input == 'y'
+    puts File.file?('/saves/save.txt')
   end
 
   def game(s_word, f_guesses, won)
