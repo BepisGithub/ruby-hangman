@@ -1,3 +1,5 @@
+require 'json'
+
 $dictionary = File.open('5desk.txt', 'r')
 
 class Game
@@ -27,8 +29,8 @@ class Game
     [s_arr.include?(guess), guess]
   end
 
-  def save_game_prompt
-    # TODO
+  def save_game_prompt(s_arr, f_guesses, w_chars, y_guess)
+    
   end
 
   def game(s_word, f_guesses, won)
@@ -37,7 +39,7 @@ class Game
     your_guess.fill('_', 0, secret_word_array.length)
     wrong_chars = []
     while f_guesses < @max_failures && !won
-      save_game_prompt
+      save_game_prompt(secret_word_array, f_guesses, wrong_chars, your_guess)
       puts "#{your_guess} is your guess"
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       puts "The letters you have guessed incorrectly so far are #{wrong_chars}" unless wrong_chars.empty?
