@@ -37,8 +37,7 @@ class Game
       save_data = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json
       existance_of_save = File.file?(@save_path)
       if existance_of_save
-        # overwrite the file
-        File.open(@save_path, 'w') {}
+        File.open(@save_path, 'w') {} # overwrite the file
         File.write(@save_path, save_data)
       else
         # create file then save data
