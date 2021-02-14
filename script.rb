@@ -30,7 +30,7 @@ class Game
   end
 
   def save_game_prompt(s_arr, f_guesses, w_chars, y_guess)
-    
+    save = {:s_arr => s_arr, :f_guesses => f_guesses, :w_chars => w_chars, :y_guess => y_guess}.to_json
   end
 
   def game(s_word, f_guesses, won)
