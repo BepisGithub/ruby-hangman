@@ -36,8 +36,8 @@ class Game
       puts "You have guessed incorrectly #{f_guesses} times. You can guess for a max of #{@max_failures} guesses"
       result = round(secret_word_array)
       won = true if your_guess == secret_word_array
-      
     end
+    #after you won or lost
   end
   
 
