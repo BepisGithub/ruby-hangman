@@ -59,7 +59,7 @@ class Game
   def game(s_word, f_guesses, won, y_guess = [], w_chars = [])
     secret_word_array = s_word.downcase.strip.split('')
     your_guess = y_guess
-    your_guess.fill('_', 0, secret_word_array.length)
+    your_guess.fill('_', 0, secret_word_array.length) if y_guess == []
     wrong_chars = w_chars
     while f_guesses < @max_failures && !won
       save_game_prompt(secret_word_array, f_guesses, wrong_chars, your_guess)
